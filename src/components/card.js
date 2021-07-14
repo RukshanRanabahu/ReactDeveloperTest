@@ -2,15 +2,10 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { connect } from "react-redux"
-import {
-    getImageList,
-} from "../redux/imageFilter/imageFilter.actions"
 
 const useStyles = makeStyles({
     root: {
@@ -23,9 +18,8 @@ const useStyles = makeStyles({
 
 function MediaCard(props) {
     const classes = useStyles();
-
     return (
-        <Card className={classes.root} key={props.id}>
+        <Card className={classes.root}>
             <CardActionArea>
                 <CardMedia
                     className={classes.media}
@@ -38,33 +32,25 @@ function MediaCard(props) {
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
                         City : {props.city} <br />
-                        {/* DOB : {props.dob} */}
-                        DOB : {props.dob.slice(0, 4) + "/" + props.dob.slice(5, 7) + "/" + props.dob.slice(8, 10)}
+                        DOB : {props.dob.slice(0, 4) + "/" + props.dob.slice(5, 7) + "/" + props.dob.slice(8, 10)} <br />
+                        {props.age_list.length ?
+                            <>
+                                Age : {JSON.stringify(props.age_list[props.index].age)}
+                            </>
+                            :
+                            <></>
+                        }
                     </Typography>
                 </CardContent>
             </CardActionArea>
-            {/* <CardActions>
-                <Button size="small" color="primary" >
-                    Share
-                </Button>
-                <Button size="small" color="primary" >
-                    Learn More
-                </Button>
-            </CardActions> */}
         </Card>
     );
 }
 
 const mapStateToProps = state => {
     return {
-        count: state.peopleList.count,
+        age_list: state.randomPeopleData.random_age_data,
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        getImageList: () => dispatch(getImageList()),
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MediaCard)
+export default connect(mapStateToProps)(MediaCard)

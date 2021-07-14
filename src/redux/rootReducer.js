@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import imageReducer from './imageFilter/imageFilter.reducer';
+import randomPeopleReducer from './randomPeople/randomPeople.reducer';
 
 const rootReducer = combineReducers({
-    peopleList: imageReducer,
+    randomPeopleData: randomPeopleReducer,
 });
 
 export default rootReducer;
