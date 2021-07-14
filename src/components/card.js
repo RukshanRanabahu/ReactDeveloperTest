@@ -17,7 +17,7 @@ const useStyles = makeStyles({
         maxWidth: 345,
     },
     media: {
-        height: 140,
+        height: 230,
     },
 });
 
@@ -29,34 +29,35 @@ function MediaCard(props) {
             <CardActionArea>
                 <CardMedia
                     className={classes.media}
-                    image="/static/images/cards/contemplative-reptile.jpg"
+                    image={props.imageSrc}
                     title="Contemplative Reptile"
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        Lizard
+                    <Typography gutterBottom variant="h6" component="h6">
+                        Name : {props.name}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                        across all continents except Antarctica
+                        City : {props.city} <br />
+                        {/* DOB : {props.dob} */}
+                        DOB : {props.dob.slice(0, 4) + "/" + props.dob.slice(5, 7) + "/" + props.dob.slice(8, 10)}
                     </Typography>
                 </CardContent>
             </CardActionArea>
-            <CardActions>
+            {/* <CardActions>
                 <Button size="small" color="primary" >
                     Share
                 </Button>
                 <Button size="small" color="primary" >
                     Learn More
                 </Button>
-            </CardActions>
+            </CardActions> */}
         </Card>
     );
 }
 
 const mapStateToProps = state => {
     return {
-        count: state.counter.count,
+        count: state.peopleList.count,
     }
 }
 
