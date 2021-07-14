@@ -32,7 +32,7 @@ function MediaCard(props) {
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
                         City : {props.city} <br />
-                        DOB : {props.dob.slice(0, 4) + "/" + props.dob.slice(5, 7) + "/" + props.dob.slice(8, 10)} <br />
+                        Date of birth : {props.dob.slice(0, 4) + "/" + props.dob.slice(5, 7) + "/" + props.dob.slice(8, 10)} <br />
                         {props.age_list.length ?
                             <>
                                 Age : {JSON.stringify(props.age_list[props.index].age)}
